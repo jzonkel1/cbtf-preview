@@ -126,7 +126,7 @@ section{padding-block:clamp(70px,9vw,120px)}
 .pb-photo img,.pb-photo video{width:100%;height:100%;object-fit:cover;object-position:50% 45%;background:#05140D}
 .pb-tag{position:absolute;left:20px;bottom:20px;background:var(--cream);color:var(--green);font-weight:800;font-size:.85rem;padding:10px 16px;border-radius:999px}
 .pb-list{margin:26px 0 30px;display:grid;gap:16px}
-.pb-item{display:grid;grid-template-columns:auto 1fr;gap:18px;padding:20px 22px;border:1px solid var(--line);border-radius:16px;background:#FBF8F1}
+.pb-item{display:grid;grid-template-columns:auto 1fr;align-items:center;text-align:left;gap:18px;padding:20px 22px;border:1px solid var(--line);border-radius:16px;background:#FBF8F1}
 .pb-item b{font-family:var(--serif);font-size:1.45rem;color:var(--green);display:block;line-height:1.1;margin-bottom:4px}
 .pb-item span{color:var(--muted);font-size:.98rem}
 .pb-item .ic{width:46px;height:46px;border-radius:12px;background:var(--green);display:grid;place-items:center;color:var(--gold)}
@@ -196,17 +196,19 @@ section{padding-block:clamp(70px,9vw,120px)}
 
 /* local network directory (v5) */
 .net{background:#fff}
-.net-head{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:end;margin-bottom:40px}
+.net-head{display:flex;flex-direction:column;align-items:center;text-align:center;margin:0 auto 40px;max-width:760px}
+.net-head .lead{margin-inline:auto}
 .net-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .net-cat{display:flex;flex-direction:column;gap:6px;padding:22px 22px 20px;border:1px solid var(--line);border-radius:16px;background:#FBF8F1;text-decoration:none;color:var(--green);transition:border-color .2s,background .2s}
 .net-cat:hover{border-color:var(--gold-2);background:#fff}
 .net-cat b{font-family:var(--serif);font-size:1.45rem;line-height:1.15}
 .net-cat span{font-size:.92rem;color:var(--muted)}
 .net-cat i{font-style:normal;font-weight:800;font-size:.85rem;margin-top:auto;padding-top:8px;color:var(--gold-ink)}
-.net-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px;align-items:center}
+.net-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px;align-items:center;justify-content:center;text-align:center}
 .net-actions small{color:var(--muted);font-size:.9rem;flex-basis:100%}
 @media (max-width:760px){
   .net .net-grid{grid-template-columns:1fr;gap:10px}
+  .net-head .kick{letter-spacing:.12em;white-space:nowrap}.net-head .kick::before,.net-head .kick::after{display:none}
   .net-cat{display:grid;grid-template-columns:1fr auto;align-items:center;gap:2px 12px;padding:15px 18px}
   .net-cat b{font-size:1.3rem}.net-cat span{grid-column:1;font-size:.9rem}
   .net-cat i{grid-column:2;grid-row:1/3;padding:0;font-size:0}.net-cat i::after{content:"\2192";font-size:1.3rem}
@@ -257,7 +259,7 @@ section{padding-block:clamp(70px,9vw,120px)}
 @media (max-width:1460px){.hdr-call .num{display:none}}
 @media (max-width:1100px){.nav{display:none}.menu-btn{display:grid;place-items:center}}
 @media (max-width:980px){
-  .net-head{grid-template-columns:1fr;gap:16px}.net-grid{grid-template-columns:1fr 1fr}
+  .net-head{gap:16px}.net-grid{grid-template-columns:1fr 1fr}
   .nav,.hdr-call .num{display:none}
   .svc-head,.pb,.meet-grid,.offer-in{grid-template-columns:1fr;gap:34px}
   .svc{grid-template-columns:1fr 1fr}
@@ -281,7 +283,8 @@ section{padding-block:clamp(70px,9vw,120px)}
   .hero::before{background:linear-gradient(180deg,rgba(246,241,230,0) 0%,rgba(246,241,230,0) 30%,rgba(246,241,230,1) 46svh)}
   .hero{flex-direction:column}
   .hero .wrap{margin-top:-60px}
-  .hero-copy{margin-inline:auto}
+  .hero-copy{margin-inline:auto;max-width:none}
+  .hero .kick{white-space:normal}
   .hero h1{font-size:min(10.2vw,2.6rem)}
   .kick .d{display:none}
   .hero p{font-size:1.06rem;margin-inline:auto}
@@ -426,7 +429,7 @@ section{padding-block:clamp(70px,9vw,120px)}
 
 <section class="net" id="network"><div class="wrap">
   <div class="net-head">
-    <div><span class="who-does partner">Through our partner network</span><div class="kick left" style="margin-top:18px">Coastal Bend Business Network</div><h2>Trusted local pros, one call away.</h2></div>
+    <div style="display:flex;flex-direction:column;align-items:center"><span class="who-does partner" style="align-self:center">Through our partner network</span><div class="kick" style="margin-top:18px">Coastal Bend Business Network</div><h2>Trusted local pros, one call away.</h2></div>
     <p class="lead">Need a contractor, an electrician or an attorney? Pick what you need, tell us about the job, and we'll connect you with a business owner from our network.</p>
   </div>
   <div class="net-grid"><a class="net-cat" href="#contact"><b>Construction</b><span>Construction contractors</span><i>Request a referral &rarr;</i></a><a class="net-cat" href="#contact"><b>Electrical</b><span>Licensed electricians</span><i>Request a referral &rarr;</i></a><a class="net-cat" href="#contact"><b>Plumbing</b><span>Repairs and new installs</span><i>Request a referral &rarr;</i></a><a class="net-cat" href="#contact"><b>Legal</b><span>Attorneys for business and family</span><i>Request a referral &rarr;</i></a><a class="net-cat" href="#contact"><b>Accounting &amp; CPA</b><span>CPA and advanced tax advisory</span><i>Request a referral &rarr;</i></a><a class="net-cat" href="#contact"><b>Insurance &amp; Planning</b><span>Through The Enrichment Group</span><i>Request a referral &rarr;</i></a><a class="net-cat" href="#contact"><b>Credit Repair</b><span>Rebuild and protect your credit</span><i>Request a referral &rarr;</i></a><a class="net-cat" href="#contact"><b>Websites &amp; Marketing</b><span>Get found online</span><i>Request a referral &rarr;</i></a></div>
