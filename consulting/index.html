@@ -138,9 +138,36 @@
   const bar = document.getElementById('mbar'), hero = document.querySelector('.fh');
   if (hero && 'IntersectionObserver' in window) new IntersectionObserver(([e]) => bar.classList.toggle('on', !e.isIntersecting && e.boundingClientRect.top < 0)).observe(hero);
   else bar.classList.add('on');
-  const m = document.getElementById('mnav'), b = document.querySelector('.menu-btn');
-  const set = o => { m.classList.toggle('open', o); m.setAttribute('aria-hidden', !o); b.setAttribute('aria-expanded', o); document.body.classList.toggle('lock', o); };
-  b.addEventListener('click', () => set(true));
+  const m = document.getElementById('mnav'), b = document.querySelector('.menu-btn'), EASE = 'cubic-bezier(.32,.72,0,1)';
+  [...m.querySelector('.mnav-panel').children].forEach((c, i) => c.style.setProperty('--i', i));
+  const set = (o, kb) => {
+    if (o === m.classList.contains('open')) return;
+    document.documentElement.classList.toggle('lock', o);
+    m.classList.toggle('open', o); m.setAttribute('aria-hidden', !o); b.setAttribute('aria-expanded', o);
+    if (o && kb) setTimeout(() => m.querySelector('.mnav-close').focus({preventScroll: true}), 60);
+    else if (m.contains(document.activeElement)) b.focus({preventScroll: true});
+  };
+  m.addEventListener('touchmove', e => { if (!e.target.closest('.mnav-panel')) e.preventDefault(); }, {passive: false});
+  b.addEventListener('click', e => set(true, e.detail === 0));
+  m.querySelectorAll('.mg').forEach(g => {
+    const sm = g.querySelector('summary'), l = g.querySelector('.mg-l');
+    g.classList.toggle('on', g.open);
+    sm.addEventListener('click', e => {
+      e.preventDefault(); if (g._a) g._a.cancel();
+      const from = g.open ? l.offsetHeight : 0, open = !g.classList.contains('on');
+      g.classList.toggle('on', open); g.classList.toggle('closing', !open);
+      if (open) {
+        m.querySelectorAll('.mg.on').forEach(o => { if (o !== g) o.querySelector('summary').click(); });
+        g.open = true; const h = l.scrollHeight;
+        g._a = l.animate([{height: from + 'px'}, {height: h + 'px'}], {duration: 420, easing: EASE});
+        [...l.children].forEach((a, i) => a.animate([{opacity: 0, transform: 'translateY(-6px)'}, {opacity: 1, transform: 'none'}], {duration: 360, delay: 40 + i * 22, easing: EASE, fill: 'backwards'}));
+        g._a.onfinish = () => { g._a = null; };
+      } else {
+        g._a = l.animate([{height: l.offsetHeight + 'px'}, {height: '0px'}], {duration: 280, easing: 'cubic-bezier(.4,0,.2,1)'});
+        g._a.onfinish = () => { g.open = false; g.classList.remove('closing'); g._a = null; };
+      }
+    });
+  });
   m.addEventListener('click', e => { if (e.target === m || e.target.closest('.mnav-close') || e.target.closest('a')) set(false); });
   const dds = [...document.querySelectorAll('.dd')], shut = x => dds.forEach(d => { if (d !== x) { d.classList.remove('open'); d.querySelector('.dd-t').setAttribute('aria-expanded', 'false'); } });
   dds.forEach(d => { const t = d.querySelector('.dd-t');
