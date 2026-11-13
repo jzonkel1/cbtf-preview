@@ -592,7 +592,7 @@ body.lock{overflow:hidden}
 @media (max-width:760px){
   .fh{min-height:max(600px,88svh);align-items:flex-end;padding:90px 0 40px;text-align:center}
   .fh-page{min-height:max(560px,82svh)}
-  .fh::before{background:linear-gradient(180deg,rgba(4,26,16,.38) 0%,rgba(4,26,16,.55) 30%,rgba(4,26,16,.88) 58%,rgba(4,26,16,.96) 100%)}
+  .fh::before{background:linear-gradient(180deg,rgba(4,26,16,.66) 0%,rgba(4,26,16,.74) 30%,rgba(4,26,16,.9) 58%,rgba(4,26,16,.96) 100%)}
   .fh picture img{animation:none}
   .fh-copy{margin-inline:auto;max-width:none}
   .fh .kick{letter-spacing:.14em;font-size:.7rem}
@@ -627,3 +627,29 @@ body.lock{overflow:hidden}
 @media (max-width:480px){.btn{white-space:normal;text-align:center;line-height:1.2;padding-block:10px}.split > div,.hnw-grid > div,.pb-copy,.meet-copy{min-width:0}}
 @media (max-width:360px){.fh .crumbs,.fh .who-does,.fh .who-does + br{display:none}.fh-page h1{font-size:2rem}.fh .lede{font-size:.98rem;margin-bottom:22px}.hdr .logo img{height:30px}.hdr .wrap{gap:8px}.menu-btn{width:44px;height:44px}}
 .div > a:last-child:not(.btn){display:inline-block;padding:12px 0;margin:-12px 0 -12px}
+/* 11/13 mobile sweep fixes */
+.nw{white-space:nowrap}
+a[href^="mailto:"]{overflow-wrap:normal}
+h1,h2,h3,.kick,.btn,.lede,.lead,.tag,.role{text-wrap:balance}
+p,li,blockquote,.net-cat span{text-wrap:pretty}
+.fh .crumbs,.fh .kick,.fh .who-does{text-shadow:0 1px 10px rgba(0,0,0,.55)}
+.fh h1{text-shadow:0 2px 18px rgba(0,0,0,.35)}
+.mnav-top{position:sticky;top:-22px;z-index:3;background:var(--cream);margin:-22px -24px 14px;padding:22px 24px 12px}
+.role .sep{color:var(--gold-2)}
+/* PayPal buy blocks */
+.buy{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.buy .price{font-family:var(--serif);font-size:1.9rem;font-weight:700;color:var(--green);line-height:1}
+.buy .pp{width:100%;max-width:340px;position:relative;z-index:1}
+.buy.pp-on .pp-fallback{display:none}
+.buy .pp-fallback{align-self:flex-start}
+.buy .pp-note{font-size:.84rem;color:var(--muted)}
+.pb-item.has-buy{align-items:start}
+.prod .buy{width:100%;margin-top:auto}
+.prod .ask{font-weight:700;color:var(--green);text-decoration:underline;text-underline-offset:3px;padding:10px 0;margin:-6px 0 -10px}
+@media (max-width:760px){
+  .meet .creds{text-align:center}
+  .meet blockquote{text-align:center;border-left:0;border-top:3px solid var(--gold-2);padding:20px 0 0;font-size:1.45rem}
+  .role .sep{display:block;height:0;overflow:hidden}
+  .prod .buy{align-items:center}.prod .buy .pp{margin-inline:auto}.buy .pp-fallback{align-self:stretch}
+  .pb-item.has-buy .buy{align-items:stretch}
+}
