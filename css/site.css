@@ -643,6 +643,9 @@ p,li,blockquote,.net-cat span{text-wrap:pretty}
 .buy.pp-on .pp-fallback{display:none}
 .buy .pp-fallback{align-self:flex-start}
 .buy .pp-note{font-size:.84rem;color:var(--muted)}
+.buy .sq-btn{align-self:stretch;max-width:340px;justify-content:center}
+.buy .pp-or{font-size:.8rem;color:var(--muted);text-align:center;max-width:340px}
+.buy.sq-off .sq-btn,.buy.sq-off .pp-or{display:none}
 .pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px;align-items:stretch}
 .pkg-grid.two{grid-template-columns:repeat(2,1fr);max-width:860px;margin-inline:auto}
 .pkg{position:relative;background:#FBF8F1;border:1px solid var(--line);border-radius:20px;padding:30px 26px;display:flex;flex-direction:column;gap:12px;scroll-margin-top:100px}
