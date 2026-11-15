@@ -33,6 +33,7 @@
 
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><linearGradient id="gfoil" x1="0" y1="0" x2=".35" y2="1"><stop offset="0" stop-color="#F8E7B4"/><stop offset=".38" stop-color="#E0BC70"/><stop offset=".62" stop-color="#B0843D"/><stop offset=".82" stop-color="#E9C982"/><stop offset="1" stop-color="#C9A257"/></linearGradient></defs></svg>
 
 <header class="hdr"><div class="wrap">
   <a class="logo" href="../" aria-label="Coastal Bend Tax &amp; Financial home"><img src="../img/cbf-logo-horizontal.webp" alt="Coastal Bend Tax &amp; Financial" width="900" height="151"></a>
@@ -218,6 +219,16 @@ document.querySelectorAll('.qw').forEach(f => {
   if (t && map[t] && f.dataset.prefill !== 'off') { const b = [...f.querySelectorAll('.qw-opt[data-field=need]')].find(x => x.dataset.value === lab[map[t]]); if (b) { b.classList.add('sel'); f.elements['need'].value = b.dataset.value; if (t === 'list') f.elements['message'].value = 'I would like to list my business in the Marketplace.'; if (t === 'review') f.elements['message'].value = 'Interested in the $79 Bookkeeping Review.'; if (t === 'mentorship') f.elements['message'].value = 'Interested in mentorship or internships.'; show(2); } }
   show(cur);
 });
+
+(function(){ const st = [...document.querySelectorAll('.step')]; if (!st.length) return; let tick = false;
+  const mq = matchMedia('(max-width:760px)');
+  function upd(){ tick = false; const m = innerHeight * 0.62;
+    st.forEach(s => { if (!mq.matches) { s.classList.add('lit'); s.style.removeProperty('--f'); return; }
+      const r = s.getBoundingClientRect(); s.classList.toggle('lit', r.top + 37 < m);
+      const f = r.height ? (m - r.top - 62) / (r.height - 44) : 0; s.style.setProperty('--f', Math.max(0, Math.min(1, f)).toFixed(3)); }); }
+  addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(upd); } }, {passive: true});
+  addEventListener('resize', upd); upd();
+})();
 </script>
 </body>
 </html>

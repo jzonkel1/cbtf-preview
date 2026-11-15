@@ -630,7 +630,8 @@ body.lock{overflow:hidden}
 /* 11/13 mobile sweep fixes */
 .nw{white-space:nowrap}
 a[href^="mailto:"]{overflow-wrap:normal}
-h1,h2,h3,.kick,.btn,.lede,.lead,.tag,.role{text-wrap:balance}
+h1,h2,h3,.kick,.lede,.lead,.tag,.role{text-wrap:balance}
+@media (max-width:480px){.btn{text-wrap:balance}}
 p,li,blockquote,.net-cat span{text-wrap:pretty}
 .fh .crumbs,.fh .kick,.fh .who-does{text-shadow:0 1px 10px rgba(0,0,0,.55)}
 .fh h1{text-shadow:0 2px 18px rgba(0,0,0,.35)}
@@ -684,3 +685,45 @@ p,li,blockquote,.net-cat span{text-wrap:pretty}
   .pkg .buy .pp{max-width:none}
 }
 @media (min-width:761px) and (max-width:1100px){.pkg-grid{grid-template-columns:1fr;max-width:560px;margin-inline:auto}}
+/* 11/15: header button on one line, bigger calendar */
+.hdr-call .btn{font-size:.9rem;padding:0 22px 0 18px;min-height:50px;gap:9px;letter-spacing:.005em}
+.hdr-call .btn svg{width:24px;height:24px}
+/* 11/15: gold-foil icon medallions (match the badge: green disc, gold ring, foil glyph) */
+.pkg .ic,.prod .ic,.qw-opt .qi{border-radius:50%;border:2px solid transparent;color:#E0BC70;
+  background:radial-gradient(circle at 34% 28%,#145C3A 0%,#0A3F27 42%,#052615 100%) padding-box,
+             linear-gradient(145deg,#F8E7B4 0%,#C9A257 35%,#8E6A2C 55%,#EBCB84 78%,#B0843D 100%) border-box;
+  box-shadow:inset 0 0 0 3px #062E1C,inset 0 0 0 4px rgba(224,188,112,.45),0 8px 18px -8px rgba(4,26,16,.55)}
+.pkg .ic svg,.prod .ic svg,.qw-opt .qi svg{fill:url(#gfoil);filter:drop-shadow(0 1px 0 rgba(0,0,0,.45))}
+.pkg .ic,.prod .ic{width:66px;height:66px}.pkg .ic svg,.prod .ic svg{width:34px;height:34px}
+.qw-opt .qi{width:48px;height:48px}.qw-opt .qi svg{width:25px;height:25px}
+.prod.open .ic{background:transparent;border:1.5px dashed var(--gold-2);box-shadow:none;color:var(--gold-ink)}
+.prod.open .ic svg{fill:currentColor;filter:none}
+/* 11/15: step numbers = gold-ring medallions, lining figures, bigger */
+.step{padding-top:88px}
+.step::before{width:66px;height:66px;font-size:2rem;line-height:1;font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1;
+  border:2px solid transparent;color:#E9C97E;text-shadow:0 1px 0 rgba(0,0,0,.4);
+  background:radial-gradient(circle at 34% 28%,#145C3A 0%,#0A3F27 42%,#052615 100%) padding-box,
+             linear-gradient(145deg,#F8E7B4 0%,#C9A257 35%,#8E6A2C 55%,#EBCB84 78%,#B0843D 100%) border-box;
+  box-shadow:inset 0 0 0 3px #062E1C,inset 0 0 0 4px rgba(224,188,112,.45),0 8px 18px -8px rgba(4,26,16,.55)}
+.step::after{top:33px;left:82px}
+.q-line{text-align:center;margin-top:34px}
+@media (max-width:760px){
+  .steps,.steps.four{text-align:left;grid-template-columns:1fr;gap:18px;max-width:460px;margin-inline:auto}
+  .step{margin-left:66px;padding:18px 20px;background:#fff;border:1px solid var(--line);border-radius:16px;transition:border-color .35s ease,box-shadow .35s ease}
+  .step h3{margin:0 0 6px}
+  .step::before{left:-66px;top:12px;transform:none;width:50px;height:50px;font-size:1.6rem;z-index:1;
+    color:var(--green);text-shadow:none;background:linear-gradient(#FBF8F1,#FBF8F1) padding-box,linear-gradient(145deg,#E7CF97,#C9A257) border-box;
+    box-shadow:none;transition:color .35s ease,background .35s ease,box-shadow .35s ease}
+  .step::after{display:block;left:-42px;right:auto;top:62px;width:2px;height:calc(100% - 44px);z-index:0;border-radius:2px;
+    background:linear-gradient(#C9A257,#C9A257) 0 0/100% calc(var(--f,0)*100%) no-repeat,var(--line)}
+  .step:last-child::after{display:none}
+  .step.lit{border-color:#E4D3A8;box-shadow:0 14px 30px -20px rgba(6,46,28,.45)}
+  .step.lit::before{color:#E9C97E;text-shadow:0 1px 0 rgba(0,0,0,.4);
+    background:radial-gradient(circle at 34% 28%,#145C3A 0%,#0A3F27 42%,#052615 100%) padding-box,
+               linear-gradient(145deg,#F8E7B4 0%,#C9A257 35%,#8E6A2C 55%,#EBCB84 78%,#B0843D 100%) border-box;
+    box-shadow:inset 0 0 0 3px #062E1C,inset 0 0 0 4px rgba(224,188,112,.45),0 10px 22px -8px rgba(4,26,16,.6)}
+  .pkg .ic,.prod .ic{width:60px;height:60px}
+  /* free consultation ticks: centre the list as a block, keep text left-aligned */
+  .wzb .ticks{max-width:min(100%,300px);width:fit-content;margin-inline:auto;text-align:left}
+}
+@media (prefers-reduced-motion:reduce){.step,.step::before{transition:none}}
